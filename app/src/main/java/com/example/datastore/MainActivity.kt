@@ -98,6 +98,7 @@ private fun Main() {
         TextField(
             value = tokenValue.value,
             onValueChange = { tokenValue.value = it },
+            placeholder = { Text("Username") },
         )
 
         Spacer(modifier = Modifier.height(15.dp))
@@ -105,6 +106,7 @@ private fun Main() {
         TextField(
             value = tokenValue1.value,
             onValueChange = { tokenValue1.value = it },
+            placeholder = { Text("Email") },
         )
 
         Spacer(modifier = Modifier.height(15.dp))
@@ -112,6 +114,7 @@ private fun Main() {
         TextField(
             value = tokenValue2.value,
             onValueChange = { tokenValue2.value = it },
+            placeholder = { Text("ID") },
         )
 
         Spacer(modifier = Modifier.height(30.dp))
