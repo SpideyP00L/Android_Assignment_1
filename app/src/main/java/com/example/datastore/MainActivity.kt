@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -115,17 +117,45 @@ private fun Main() {
         Spacer(modifier = Modifier.height(30.dp))
 
 
-        Button(
-            onClick = {
-                CoroutineScope(Dispatchers.IO).launch {
-                    store.saveToken(tokenValue.value.text)
-                    store.saveToken1(tokenValue1.value.text)
-                    store.saveToken2(tokenValue2.value.text)
+        Row {
+
+            Button(
+                onClick = {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        store.saveToken(tokenValue.value.text)
+                        store.saveToken1(tokenValue1.value.text)
+                        store.saveToken2(tokenValue2.value.text)
+                    }
                 }
+            ) {
+                Text(text = "Load")
             }
-        ) {
-            Text(text = "Update Token")
+            Spacer(modifier = Modifier.padding(10.dp))
+            Button(
+                onClick = {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        store.saveToken(tokenValue.value.text)
+                        store.saveToken1(tokenValue1.value.text)
+                        store.saveToken2(tokenValue2.value.text)
+                    }
+                }
+            ) {
+                Text(text = "Save")
+            }
+            Spacer(modifier = Modifier.padding(10.dp))
+            Button(
+                onClick = {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        store.saveToken(tokenValue.value.text)
+                        store.saveToken1(tokenValue1.value.text)
+                        store.saveToken2(tokenValue2.value.text)
+                    }
+                }
+            ) {
+                Text(text = "Clear")
+            }
         }
+
 
         Spacer(modifier = Modifier.height(50.dp))
 
