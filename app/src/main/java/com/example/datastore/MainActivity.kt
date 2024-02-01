@@ -121,16 +121,24 @@ private fun Main() {
 
             Button(
                 onClick = {
+                    // Call the function to load stored values
                     CoroutineScope(Dispatchers.IO).launch {
-                        store.saveToken(tokenValue.value.text)
-                        store.saveToken1(tokenValue1.value.text)
-                        store.saveToken2(tokenValue2.value.text)
+                        val loadedUserName = store.loadUserName()
+                        val loadedEmail = store.loadEmail()
+                        val loadedStudentID = store.loadStudentID()
+
+                        // Update the mutable state variables
+                        tokenValue2.value = TextFieldValue(loadedUserName)
+                        tokenValue1.value = TextFieldValue(loadedEmail)
+                        tokenValue.value = TextFieldValue(loadedStudentID)
                     }
                 }
             ) {
                 Text(text = "Load")
             }
+
             Spacer(modifier = Modifier.padding(10.dp))
+
             Button(
                 onClick = {
                     CoroutineScope(Dispatchers.IO).launch {
@@ -143,13 +151,18 @@ private fun Main() {
                 Text(text = "Save")
             }
             Spacer(modifier = Modifier.padding(10.dp))
+
             Button(
                 onClick = {
+                    // Call the function to clear stored values
                     CoroutineScope(Dispatchers.IO).launch {
-                        store.saveToken(tokenValue.value.text)
-                        store.saveToken1(tokenValue1.value.text)
-                        store.saveToken2(tokenValue2.value.text)
+                        store.clearStoredValues()
                     }
+
+                    // Clear text fields
+                    tokenValue.value = TextFieldValue()
+                    tokenValue1.value = TextFieldValue()
+                    tokenValue2.value = TextFieldValue()
                 }
             ) {
                 Text(text = "Clear")
