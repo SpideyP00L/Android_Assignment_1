@@ -12,38 +12,38 @@ import kotlinx.coroutines.flow.map
 class UserStore(private val context: Context) {
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("userToken")
-        private val USER_TOKEN_KEY = stringPreferencesKey("user_token")
-        private val USER_TOKEN_KEY_ID = stringPreferencesKey("user_token_id")
-        private val USER_TOKEN_KEY_Name = stringPreferencesKey("user_token_name")
+        private val STUDENT_ID_KEY = stringPreferencesKey("student_id")
+        private val EMAIL_KEY = stringPreferencesKey("email_id")
+        private val USER_NAME_ID = stringPreferencesKey("user_name_id")
     }
 
     val getAccessToken: Flow<String> = context.dataStore.data.map { preferences ->
-        preferences[USER_TOKEN_KEY] ?: ""
+        preferences[STUDENT_ID_KEY] ?: ""
     }
 
     val getAccessToken1: Flow<String> = context.dataStore.data.map { preferences ->
-        preferences[USER_TOKEN_KEY_ID] ?: ""
+        preferences[EMAIL_KEY] ?: ""
     }
 
     val getAccessToken2: Flow<String> = context.dataStore.data.map { preferences ->
-        preferences[USER_TOKEN_KEY_Name] ?: ""
+        preferences[USER_NAME_ID] ?: ""
     }
 
     suspend fun saveToken(token: String) {
         context.dataStore.edit { preferences ->
-            preferences[USER_TOKEN_KEY] = token
+            preferences[STUDENT_ID_KEY] = token
         }
     }
 
     suspend fun saveToken1(token: String) {
         context.dataStore.edit { preferences ->
-            preferences[USER_TOKEN_KEY_ID] = token
+            preferences[EMAIL_KEY] = token
         }
     }
 
     suspend fun saveToken2(token: String) {
         context.dataStore.edit { preferences ->
-            preferences[USER_TOKEN_KEY_Name] = token
+            preferences[USER_NAME_ID] = token
         }
     }
 }
