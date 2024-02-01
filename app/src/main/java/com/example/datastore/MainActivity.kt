@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
@@ -79,7 +81,7 @@ private fun Main() {
     ) {
         Spacer(modifier = Modifier.height(30.dp))
 
-        Text(text = "Android Lab 3", fontWeight = FontWeight.Bold, fontSize = 30.sp)
+        Text(text = "Android Assignment 1", fontWeight = FontWeight.Bold, fontSize = 30.sp)
 
         Spacer(modifier = Modifier.height(15.dp))
 
@@ -135,7 +137,8 @@ private fun Main() {
                         tokenValue1.value = TextFieldValue(loadedEmail)
                         tokenValue.value = TextFieldValue(loadedStudentID)
                     }
-                }
+                },
+                colors = ButtonDefaults.buttonColors(Color.Yellow)
             ) {
                 Text(text = "Load")
             }
@@ -149,7 +152,8 @@ private fun Main() {
                         store.saveToken1(tokenValue1.value.text)
                         store.saveToken2(tokenValue2.value.text)
                     }
-                }
+                },
+                colors = ButtonDefaults.buttonColors(Color.Green)
             ) {
                 Text(text = "Save")
             }
@@ -166,7 +170,8 @@ private fun Main() {
                     tokenValue.value = TextFieldValue()
                     tokenValue1.value = TextFieldValue()
                     tokenValue2.value = TextFieldValue()
-                }
+                },
+                colors = ButtonDefaults.buttonColors(Color.Red)
             ) {
                 Text(text = "Clear")
             }
